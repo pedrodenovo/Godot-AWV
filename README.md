@@ -6,7 +6,7 @@
 
 # Godot Android WebView
 
-A plugin to integrate native Android WebViews into your **Godot 4** projects as a fully interactive `Control` node.
+A plugin to integrate native Android WebViews into your **Godot 4.2+** projects as a fully interactive `Control` node.
 
 This plugin allows you to render web content (local or online) as part of your user interface, ideal for login screens, news feeds, leaderboards, or even creating your entire game's UI using web technologies.
 
@@ -24,10 +24,10 @@ The API is heavily inspired by the excellent [godot-wry](https://github.com/doce
 
 ## 📦 Installation
 
-1.  Go to the [**Releases**](https://github.com/SEU_USUARIO/SEU_REPOSITORIO/releases) page and download the latest version of the plugin.
+1.  Go to the [**Releases**](https://github.com/pedrodenovo/Godot-AWV/releases) page and download the latest version of the plugin.
 2.  Extract the zip file.
-3.  Copy the `addons` folder to the root of your Godot project. The final structure should be `res://addons/GodotAndroidWebView/`.
-4.  Open your project, go to `Project > Project Settings... > Plugins` and enable the `GodotAndroidWebView` plugin.
+3.  Copy the `addons` folder to the root of your Godot project. The final structure should be `res://addons/godot_awv/`.
+4.  Open your project, go to `Project > Project Settings... > Plugins` and enable the `Godot AWV` plugin.
 
 ## 🚀 How to Use
 

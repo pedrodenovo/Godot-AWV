@@ -1,0 +1,147 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg3hylang5fxn"]
+
+[ext_resource type="Script" uid="uid://cp76rqx6y37e4" path="res://addons/GodotAndroidWebViewPlugin/web_view_control.gd" id="1_ig7tw"]
+
+[sub_resource type="GDScript" id="GDScript_ig7tw"]
+script/source = "extends Node
+
+
+func _on_web_view_control_page_loaded(url: String) -> void:
+	print($WebViewControl.background_color.to_html(true))
+	print(\"Deu certo\")
+
+
+func _on_button_pressed() -> void:
+	print(\"Foi precionado Deu certo\")
+"
+
+[node name="Node" type="Node"]
+script = SubResource("GDScript_ig7tw")
+
+[node name="WebViewControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ig7tw")
+full_window_size = true
+html = "<!DOCTYPE html>
+<html>
+<head>
+    <title>Game HUD</title>
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\">
+    <style>
+        /* 1. CONFIGURAÇÃO FUNDAMENTAL */
+        html, body {
+            /* Deixa a página transparente */
+            background-color: transparent;
+            
+            /* Remove margens e impede rolagem */
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            
+            /* Estilos básicos de texto */
+            font-family: sans-serif;
+            color: white;
+            user-select: none; /* Impede seleção de texto */
+            
+            /* IMPORTANTE: Faz o toque passar através da página por padrão */
+            pointer-events: none;
+        }
+
+        /* 2. ELEMENTOS VISUAIS (Não interativos) */
+        /* O toque passará através destes elementos pois eles não reativam os pointer-events */
+        .visual-hud {
+            position: absolute;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px #000000;
+        }
+        
+        #score {
+            top: 20px;
+            left: 20px;
+        }
+
+        /* 3. CONTAINERS INTERATIVOS */
+        /* Agrupamos os botões em um container que reativa os toques */
+        #interactive-container {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+
+            /* IMPORTANTE: Reativa o toque APENAS para esta área e seus filhos */
+            pointer-events: auto;
+            padding: 20px;
+        }
+
+        .hud-button {
+            background-color: #444;
+            border: 2px solid #888;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer; /* Mostra a mãozinha no clique */
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id=\"score\" class=\"visual-hud\">Pontos: 0</div>
+
+    <div id=\"interactive-container\">
+        <button class=\"hud-button\" onclick=\"sendMessageToGodot('open_inventory')\">Inventário</button>
+    </div>
+
+    <script>
+        let godotPort = null;
+        const scoreElement = document.getElementById('score');
+
+        // Recebe a porta de comunicação do plugin
+        window.addEventListener('message', event => {
+            if (event.data === 'init_port') {
+                godotPort = event.ports[0];
+                godotPort.onmessage = handleGodotMessage;
+            }
+        });
+
+        // Lida com mensagens vindas da Godot
+        function handleGodotMessage(event) {
+            try {
+                const command = JSON.parse(event.data);
+                
+                if (command.type === 'update_score') {
+                    scoreElement.innerText = `Pontos: ${command.value}`;
+                }
+
+            } catch (e) {
+                // Ignora mensagens que não são JSON
+            }
+        }
+
+        // Envia mensagens para a Godot
+        function sendMessageToGodot(actionType) {
+            if (godotPort) {
+                const message = JSON.stringify({ type: actionType });
+                godotPort.postMessage(message);
+            }
+        }
+    </script>"
+url = ""
+metadata/_custom_type_script = "uid://eivd264vqso5"
+
+[node name="Button" type="Button" parent="WebViewControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="page_loaded" from="WebViewControl" to="." method="_on_web_view_control_page_loaded"]
+[connection signal="pressed" from="WebViewControl/Button" to="." method="_on_button_pressed"]

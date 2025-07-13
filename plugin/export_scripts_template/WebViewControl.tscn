@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfvemkpsne862"]
+
+[ext_resource type="Script" uid="uid://eivd264vqso5" path="res://addons/GodotAndroidWebViewPlugin/web_view_control.gd" id="1_tkamj"]
+
+[node name="WebViewControl" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tkamj")
+full_window_size = true
