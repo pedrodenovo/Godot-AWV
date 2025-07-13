@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cfvemkpsne862"]
 
-[ext_resource type="Script" uid="uid://eivd264vqso5" path="res://addons/godot_awv/web_view_control.gd" id="1_tkamj"]
+[ext_resource type="Script" path="res://addons/godot_awv/web_view_control.gd" id="1_tkamj"]
 
 [node name="WebViewControl" type="Control"]
 layout_mode = 3
