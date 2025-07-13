@@ -36,10 +36,10 @@ signal eval_result(result: String)
 var _plugin
 
 func _enter_tree() -> void:
-	if Engine.has_singleton("GodotAndroidWebView"):
-		_plugin = Engine.get_singleton("GodotAndroidWebView")
+	if Engine.has_singleton("godot_awv"):
+		_plugin = Engine.get_singleton("godot_awv")
 	else:
-		printerr("Plugin 'GodotAndroidWebView' não encontrado.")
+		printerr("Plugin 'godot_awv' não encontrado.")
 		return
 
 	# Empacota as configurações iniciais para enviar de uma vez

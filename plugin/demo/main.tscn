@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cg3hylang5fxn"]
 
-[ext_resource type="Script" uid="uid://cp76rqx6y37e4" path="res://addons/GodotAndroidWebViewPlugin/web_view_control.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://cp76rqx6y37e4" path="res://addons/godot_awv/web_view_control.gd" id="1_ig7tw"]
 
 [sub_resource type="GDScript" id="GDScript_ig7tw"]
 script/source = "extends Node

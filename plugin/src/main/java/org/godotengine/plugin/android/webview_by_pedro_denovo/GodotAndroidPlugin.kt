@@ -61,7 +61,7 @@ class GodotAndroidPlugin(godot: Godot) : GodotPlugin(godot) {
     }
 }
 
-    override fun getPluginName() = "GodotAndroidWebView"
+    override fun getPluginName() = "godot_awv"
 
     override fun getPluginSignals() = mutableSetOf(
         SignalInfo("page_loaded", String::class.java),

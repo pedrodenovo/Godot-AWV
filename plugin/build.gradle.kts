@@ -6,7 +6,7 @@ plugins {
 }
 
 // TODO: Update value to your plugin's name.
-val pluginName = "GodotAndroidWebViewPlugin"
+val pluginName = "godot_awv"
 
 // TODO: Update value to match your plugin's package name.
 val pluginPackageName = "org.godotengine.plugin.android.webview_by_pedro_denovo"

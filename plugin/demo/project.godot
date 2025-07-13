@@ -28,7 +28,7 @@ window/handheld/orientation=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/GodotAndroidWebViewPlugin/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_awv/plugin.cfg")
 
 [rendering]
 

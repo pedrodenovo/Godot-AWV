@@ -16,5 +16,5 @@ dependencyResolutionManagement {
 }
 
 // TODO: Update project's name.
-rootProject.name = "GodotAndroidWebViewPlugin"
+rootProject.name = "godot_awv"
 include(":plugin")
